@@ -10,6 +10,7 @@ local_dir = "/path/to/local/directory"
 # Define the SCP command
 scp_command = f"scp -P 4410 '{remote_path}' {local_dir}"
 
+# Running the remote copy command
 def run_scp_command():
   try:
     subprocess.run(scp_command, shell=True, check=True)
@@ -17,6 +18,7 @@ def run_scp_command():
   except subprocess.CalledProcessError as e:
     print(f"Error executing SCP command: {e}")
 
+# Converting the ipynb notebooks to python scripts
 def convert_notebooks_to_python():
   try:
     notebooks = glob.glob(os.path.join(local_dir, "*.ipynb"))
@@ -29,6 +31,7 @@ def convert_notebooks_to_python():
   except subprocess.CalledProcessError as e:
     print(f"Error converting notebooks: {e}")
 
+# Running the converted python scripts
 def run_python_scripts():
   try:
     python_scripts = glob.glob(os.path.join(local_dir, "*.py"))
@@ -39,6 +42,7 @@ def run_python_scripts():
   except subprocess.CalledProcessError as e:
     print(f"Error executing Python script: {e}")
 
+# The above list of commands are executed every week
 def main():
   while True:
     run_scp_command()
